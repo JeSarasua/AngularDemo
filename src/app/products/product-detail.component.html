@@ -1,0 +1,43 @@
+<div class='card'>
+  <div class='card-header'>
+    {{pageTitle + ': ' + product.productName}}
+  </div>
+  <div class='card-body'>
+    <div class='table-responsive'>
+      <table class='table'>
+        <td>
+          <tr>Name</tr>
+          <tr>Code:</tr>
+          <tr>Description:</tr>
+          <tr>Availability:</tr>
+          <tr>Price:</tr>
+          <tr>5 Star Rating:</tr>
+        </td>
+        <td>
+          <tr>{{product.productName}}</tr>
+          <tr>{{product.productCode | lowercase | convertToSpaces:'-'}}</tr>
+          <tr>{{product.description}}</tr>
+          <tr>{{product.releaseDate}}</tr>
+          <tr>{{product.price | currency: 'USD':'symbol':'1.2-2'}}</tr>
+          <tr>
+            <pm-star
+              [rating] = 'product.starRating'>
+            </pm-star>
+          </tr>
+        </td>
+        <td><img
+                  [src]='product.imageUrl'
+                  [title]='product.productName'
+                  [style.width.px]='imageWidth'
+                  [style.margin.px]='imageMargin'></td>
+      </table>
+    </div>
+  </div>
+  <div class='card-footer'>
+    <button class='btn btn-outline-secondary'
+            style='width:80px'
+            (click)='onBack()'>
+      <i class='fa fa-chevron-left'></i> Back
+    </button>
+  </div>
+</div>
